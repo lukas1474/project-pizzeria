@@ -64,6 +64,8 @@
       thisProduct.initAccordion();
       thisProduct.initOrderForm();
       thisProduct.processOrder();
+      thisProduct.initAmountWidget();
+
 
       console.log('new Product:', thisProduct);
     }
@@ -93,6 +95,7 @@
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
       thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
+      thisProduct.amountWidgetElem = thisProduct.element.querySelector(select.menuProduct.amountWidget);
 
     }
 
@@ -210,19 +213,19 @@
             /* KONIEC jeszcze jeśli: jeśli opcja nie jest wybrana i opcja jest domyślna */
           }
 
-          /*const selectedImage = thisProduct.imageWrapper.querySelectorAll('');
+          const selectedImages = thisProduct.imageWrapper.querySelectorAll('.' + paramId + '-' + optionId);
 
           if (optionSelected) {
 
-            for (selectedImage of selectedImages) {
+            for (let selectedImage of selectedImages) {
               selectedImage.classList.add(classNames.menuProduct.imageVisible);
             }
           } else {
 
-            for (selectedImage of selectedImages) {
-              selectedImage.classList.add(classNames.menuProduct.imageVisible);
+            for (let selectedImage of selectedImages) {
+              selectedImage.classList.remove(classNames.menuProduct.imageVisible);
             }
-          } */
+          }
 
           /* END LOOP: for each optionId in param.options */
           /* KONIEC pętli: dla każdej optionId w param.options */
@@ -234,12 +237,27 @@
 
       /* set the contents of thisProduct.priceElem to be the value of variable price */
       /* ustaw zawartości thisProduct.priceElem jako wartość ceny zmiennej */
-      thisProduct.priceElem = thisProduct.price;
+      thisProduct.price = price;
+      thisProduct.priceElem.innerHTML = thisProduct.price;
 
+    }
+
+    initAmountWidget(){
+      const thisProduct = this;
+
+      thisProduct.amountWidget = new amountWidget(thisProduct.amountWidgetElem);
     }
 
   }
 
+  class amountWidget {
+    constructor(element){
+      const thisWidget = this;
+
+      console.log('AmountWidget:', thisWidget);
+      console.log('constructor arguments:', element);
+    }
+  }
 
 
 
