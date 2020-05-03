@@ -99,7 +99,7 @@
       const thisProduct = this;
 
       /* find the clickable trigger (the element that should react to clicking) */
-      //onst clickableTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
+      //const clickableTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
 
       /* START: click event listener to trigger */
       thisProduct.accordionTrigger.addEventListener('click', function () {
@@ -163,8 +163,8 @@
       console.log('formData', formData);
 
       /* set variable price to equal thisProduct.data.price */
-      /* ustaw cenę zmienną na równą thisProduct.data.price */
-      let price = thisProduct.price;
+      /* ustaw zmienną cenę na równą thisProduct.data.price */
+      let price = thisProduct.data.price;
 
       /* START LOOP: for each paramId in thisProduct.data.params */
       /* START Pętla: dla każdego paramId w thisProduct.data.params */
@@ -174,7 +174,6 @@
         /* zapisz element w thisProduct.data.params z kluczem paramId jako stała param */
         const param = thisProduct.data.params[paramId];
 
-
         /* START LOOP: for each optionId in param.options */
         /* START pętla: dla każdej optionId w param.options */
         for (let optionId in param.options) {
@@ -182,10 +181,10 @@
           /* save the element in param.options with key optionId as const option */
           /* zapisz element w param.options z kluczem optionId jako stałą option */
           const option = param.options[optionId];
+          const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
 
           /* START IF: if option is selected and option is not default */
-          /*START jeżeli: jeżeli opcja jest wybrana i opcja nie jest domyślna */
-          const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
+          /* START jeśli: jeśli opcja jest wybrana i opcja nie jest domyślna */
           if (optionSelected && !option.default) {
 
             /* add price of option to variable price */
@@ -193,23 +192,36 @@
             price += option.price;
 
             /* END IF: if option is selected and option is not default */
+            /* KONIEC jeśli: jeśli opcja jest wybrana i opcja nie jest domyślna */
           }
+
           /* START ELSE IF: if option is not selected and option is default */
-          if (!optionSelected && option.default) {
+          /* START jeszcze jeśli: jeśli opcja nie jest wybrana i opcja jest domyślna */
+          else if (!optionSelected && option.default) {
+
             /* deduct price of option from price */
+            /* odejmij cenę opcji od ceny */
+            price -= option.price;
+
+
+            /* END ELSE IF: if option is not selected and option is default */
+            /* KONIEC jeszcze jeśli: jeśli opcja nie jest wybrana i opcja jest domyślna */
           }
-          /* END ELSE IF: if option is not selected and option is default */
+
+          /* END LOOP: for each optionId in param.options */
+          /* KONIEC pętli: dla każdej optionId w param.options */
         }
-        /* END LOOP: for each optionId in param.options */
+
+        /* END LOOP: for each paramId in thisProduct.data.params */
+        /* KONIEC pętli: dla każdego paramId w thisProduct.data.params */
       }
-      /* END LOOP: for each paramId in thisProduct.data.params */
 
       /* set the contents of thisProduct.priceElem to be the value of variable price */
-
+      /* ustaw zawartości thisProduct.priceElem jako wartość ceny zmiennej */
       thisProduct.priceElem = thisProduct.price;
 
-
     }
+
   }
 
 
