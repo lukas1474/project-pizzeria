@@ -92,6 +92,7 @@
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+      thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
 
     }
 
@@ -165,6 +166,7 @@
       /* set variable price to equal thisProduct.data.price */
       /* ustaw zmienną cenę na równą thisProduct.data.price */
       let price = thisProduct.data.price;
+      console.log(price);
 
       /* START LOOP: for each paramId in thisProduct.data.params */
       /* START Pętla: dla każdego paramId w thisProduct.data.params */
@@ -193,11 +195,11 @@
 
             /* END IF: if option is selected and option is not default */
             /* KONIEC jeśli: jeśli opcja jest wybrana i opcja nie jest domyślna */
-          }
 
-          /* START ELSE IF: if option is not selected and option is default */
-          /* START jeszcze jeśli: jeśli opcja nie jest wybrana i opcja jest domyślna */
-          else if (!optionSelected && option.default) {
+
+            /* START ELSE IF: if option is not selected and option is default */
+            /* START jeszcze jeśli: jeśli opcja nie jest wybrana i opcja jest domyślna */
+          } else if (!optionSelected && option.default) {
 
             /* deduct price of option from price */
             /* odejmij cenę opcji od ceny */
@@ -207,6 +209,20 @@
             /* END ELSE IF: if option is not selected and option is default */
             /* KONIEC jeszcze jeśli: jeśli opcja nie jest wybrana i opcja jest domyślna */
           }
+
+          /*const selectedImage = thisProduct.imageWrapper.querySelectorAll('');
+
+          if (optionSelected) {
+
+            for (selectedImage of selectedImages) {
+              selectedImage.classList.add(classNames.menuProduct.imageVisible);
+            }
+          } else {
+
+            for (selectedImage of selectedImages) {
+              selectedImage.classList.add(classNames.menuProduct.imageVisible);
+            }
+          } */
 
           /* END LOOP: for each optionId in param.options */
           /* KONIEC pętli: dla każdej optionId w param.options */
