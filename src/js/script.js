@@ -63,8 +63,8 @@
       thisProduct.getElements();
       thisProduct.initAccordion();
       thisProduct.initOrderForm();
-      thisProduct.processOrder();
       thisProduct.initAmountWidget();
+      thisProduct.processOrder();
 
 
       console.log('new Product:', thisProduct);
@@ -238,26 +238,98 @@
       /* set the contents of thisProduct.priceElem to be the value of variable price */
       /* ustaw zawartości thisProduct.priceElem jako wartość ceny zmiennej */
       thisProduct.price = price;
+      /* multiply price by amount */
+      /* pomnóż cenę przez kwotę */
+      price *= thisProduct.amountWidget.value;
       thisProduct.priceElem.innerHTML = thisProduct.price;
 
     }
 
-    initAmountWidget(){
+    initAmountWidget() {
       const thisProduct = this;
 
       thisProduct.amountWidget = new amountWidget(thisProduct.amountWidgetElem);
+      thisProduct.amountWidgetElem.addEventListener('updated', function (event) {
+        event.preventDefault();
+        thisProduct.processOrder();
+      });
     }
 
   }
 
   class amountWidget {
-    constructor(element){
+    constructor(element) {
       const thisWidget = this;
+
+      thisWidget.getElements(element);
+      //thisWidget.value(settings.amountWidget.defaultValue);
+      thisWidget.setValue(thisWidget.input.value);
+      thisWidget.initActions();
 
       console.log('AmountWidget:', thisWidget);
       console.log('constructor arguments:', element);
     }
+
+    getElements(element) {
+      const thisWidget = this;
+
+      thisWidget.element = element;
+      thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
+      thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
+      thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
+    }
+
+    setValue(value) {
+      const thisWidget = this;
+
+      const newValue = parseInt(value);
+
+      /*TODO: add validation */
+      /* Do Zrobienia: dodaj walidację (sprawdzenie poprawności)*/
+
+      if (newValue != thisWidget.value && newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMax) {
+
+        thisWidget.value = newValue;
+        thisWidget.announce();
+      }
+
+      thisWidget.input.value = thisWidget.value;
+
+    }
+
+    initActions() {
+      const thisWidget = this;
+
+      thisWidget.input.addEventListener('change', function (event) {
+        event.preventDefault();
+        thisWidget.setValue(thisWidget.value.input);
+      });
+
+      thisWidget.linkDecrease.addEventListener('click', function (event) {
+        event.preventDefault();
+        thisWidget.setValue(thisWidget.value - 1);
+      });
+
+      thisWidget.linkIncrease.addEventListener('click', function (event) {
+        event.preventDefault();
+        thisWidget.setValue(thisWidget.value + 1);
+      });
+
+    }
+
+    announce() {
+      const thisWidget = this;
+
+      const event = new Event('updated');
+      thisWidget.element.dispatchEvent(event);
+    }
+
+
+
+
+
   }
+
 
 
 
