@@ -237,10 +237,13 @@
 
       /* set the contents of thisProduct.priceElem to be the value of variable price */
       /* ustaw zawartości thisProduct.priceElem jako wartość ceny zmiennej */
+      price *= thisProduct.amountWidget.value;
+
       thisProduct.price = price;
+
       /* multiply price by amount */
       /* pomnóż cenę przez kwotę */
-      price *= thisProduct.amountWidget.value;
+
       thisProduct.priceElem.innerHTML = thisProduct.price;
 
     }
