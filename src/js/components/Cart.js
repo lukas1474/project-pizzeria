@@ -142,21 +142,13 @@ class Cart {
       thisCart.totalNumber += product.amount;
     }
 
-    console.log('thsCart.totalNumber', thisCart.totalNumber);
-    console.log('thsCart.subtotalPrice', thisCart.subtotalPrice);
-    console.log('thsCart.totalPrice', thisCart.totalPrice);
+    thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
 
     for (let key of thisCart.renderTotalsKeys) {
       for (let elem of thisCart.dom[key]) {
         elem.innerHTML = thisCart[key];
       }
     }
-
-    thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
-
-    thisCart.dom.totalPrice.innerHTML = thisCart.totalPrice;
-    thisCart.dom.subtotalPrice.innerHTML = thisCart.subtotalPrice;
-    thisCart.dom.deliveryFee.innerHTML = thisCart.deliveryFee;
 
   }
 }

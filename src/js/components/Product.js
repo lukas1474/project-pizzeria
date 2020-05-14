@@ -103,7 +103,7 @@ class Product {
     thisProduct.cartButton.addEventListener('click', function (event) {
       event.preventDefault();
       thisProduct.processOrder();
-      thisProduct.addToCard();
+      thisProduct.addToCart();
     });
   }
 
@@ -227,7 +227,7 @@ class Product {
     const thisProduct = this;
 
     thisProduct.name = thisProduct.data.name;
-    thisProduct.amount = thisProduct.amountWidget.correctValue;
+    thisProduct.amount = thisProduct.amountWidget.value;
 
     //app.cart.add(thisProductCopy);
 

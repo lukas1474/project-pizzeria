@@ -34,12 +34,28 @@ class CartProduct {
 
   }
 
+  getData() {
+    const thisCartProduct = this;
+
+    const getDataProduct = {
+      id: thisCartProduct.id,
+      amount: thisCartProduct.amount,
+      price: thisCartProduct.price,
+      priceSingle: thisCartProduct.priceSingle,
+      params: thisCartProduct.params,
+
+    };
+
+    return getDataProduct;
+  }
+
   initAmountWidget() {
     const thisCartProduct = this;
 
     thisCartProduct.amountWidget = new amountWidget(thisCartProduct.dom.amountWidget);
 
-    thisCartProduct.dom.amountWidget.addEventListener('updated', function () {
+    thisCartProduct.dom.amountWidget.addEventListener('updated', function (event) {
+      event.preventDefault();
       thisCartProduct.amount = thisCartProduct.amountWidget.value;
       thisCartProduct.price = thisCartProduct.priceSingle * thisCartProduct.amount;
       thisCartProduct.dom.price.innerHTML = thisCartProduct.price;
@@ -74,20 +90,6 @@ class CartProduct {
     console.log(thisCartProduct);
   }
 
-  getData() {
-    const thisCartProduct = this;
-
-    const getDataProduct = {
-      id: thisCartProduct.id,
-      amount: thisCartProduct.amount,
-      price: thisCartProduct.price,
-      priceSingle: thisCartProduct.priceSingle,
-      params: thisCartProduct.params,
-
-    };
-
-    return getDataProduct;
-  }
 }
 
 export default CartProduct;
