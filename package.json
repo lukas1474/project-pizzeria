@@ -32,7 +32,8 @@
     "dependencies": {
         "flatpickr": "^4.6.3",
         "json-server": "^0.16.1",
-        "rangeslider-pure": "^0.4.11"
+        "rangeslider-pure": "^0.4.11",
+        "vue-flatpickr-component": "^8.1.5"
     },
     "devDependencies": {
         "autoprefixer-cli": "^1.0.0",
