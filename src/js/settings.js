@@ -67,7 +67,7 @@ export const select = {
     form: '.booking-form',
   },
   nav: {
-    links: '.nav',
+    links: '.main-nav a',
   },
 };
 
