@@ -78,6 +78,7 @@
       height: ($base-size * 2);
       top: -6px;
       background: $color-dark;
+      z-index: 2;
     }
 
   }
@@ -174,7 +175,7 @@
 
     }
 
-    &.tableselected {
+    &.selected {
       cursor: not-allowed;
       color: lighten($color-dark, 40%);
 
@@ -185,7 +186,7 @@
         height: 100%;
         left: 0;
         top: 0;
-        background: $color-main;
+        background: $color-dark;
         opacity: 0.4;
       }
     }
@@ -213,4 +214,29 @@
 .booking-options {
   @include flex(row, flex-start, space-between);
   margin: ($base-size * 4) auto;
+}
+
+#freeTable {
+  position: absolute;
+  width: 100%;
+  height: 10px;
+  z-index: 1;
+  display: flex;
+
+  div {
+    flex: 1;
+
+    &.green {
+      background: lightgreen;
+    }
+
+    &.orange {
+      background: orange;
+    }
+
+    &.red {
+      background: red;
+    }
+
+  }
 }
