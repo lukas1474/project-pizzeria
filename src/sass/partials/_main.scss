@@ -1,3 +1,13 @@
+#pages {
+  > * {
+    display: none;
+  }
+
+  > .active {
+    display: block;
+  }
+}
+
 .informations-container {
   height: 1258px;
   border-radius: $radius;
@@ -9,15 +19,15 @@
   @include flex(row, flex-start, center);
 }
 
-.order {
+.orders {
   cursor: pointer;
-  background: url('/pizzeria_photos/assets/pizza-1.jpg');
+  background: url('/images/assets/pizza-1.jpg');
   background-size: 299px 119px;
 }
 
 .book {
   cursor: pointer;
-  background: url('/pizzeria_photos/assets/pizza-2.jpg');
+  background: url('/images/assets/pizza-2.jpg');
   margin-left: 6px;
 }
 
@@ -93,5 +103,109 @@
 
 }
 
+.third-row {
+  @include flex(column, center, center);
+  position: relative;
+  margin-top: 102px;
+  width: 604px;
+  height: 300px;
+  margin-left: 34px;
+}
 
+.image {
+  background-image: url("/images/assets/pizza-3.jpg");
+  width: 193px;
+  height: 193px;
+  background-size: cover;
+}
 
+.reviews {
+  width: 367px;
+
+  ul {
+    padding-left: 70px;
+  }
+
+  li {
+    list-style: none;
+  }
+}
+
+.review-title {
+  color: $color-dark;
+  font-family: $font-text;
+  font-size: $home-size;
+  font-weight: $font-bold;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+.review-text {
+  color: $color-dark;
+  font-family: $font-text;
+  font-size: $home-size;
+  font-weight: $font-normal;
+  line-height: 23px;
+}
+
+.review-author {
+  color: $color-dark;
+  font-family: $font-text;
+  font-size: $home-size;
+  font-style: italic;
+  line-height: 23px;
+}
+
+.four-row {
+  margin-top: 80px;
+}
+
+.four-row, .fifth-row {
+  @include flex(row, flex-start, center);
+
+  img {
+    width: 193px;
+    height: 193px;
+    margin: 6px;
+    border-radius: $radius;
+  }
+}
+
+.photos-line {
+  position: relative;
+  @include flex(row, flex-start, center);
+}
+
+.photos-line img {
+  -webkit-filter: brightness(100%);
+}
+
+.photos-line:hover {
+  img {
+    -webkit-filter: brightness(50%);
+    transition: $transition;
+  }
+
+  .icon {
+    opacity: 1;
+  }
+}
+
+.icon {
+  top: 40%;
+  font-size: 20px;
+  color: $color-light;
+  position: absolute;
+  letter-spacing: .2em;
+  opacity: 0;
+  transition: opacity 0.5 ease;
+}
+
+.heart, .branch {
+  color: $color-light;
+  transition: $transition;
+}
+
+.heart:hover, .branch:hover {
+  color: $color-main;
+}

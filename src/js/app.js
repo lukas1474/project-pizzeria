@@ -128,6 +128,39 @@ const app = {
     });
   },
 
+  initCarousel: function(){
+
+    let slideIndex = 0;
+    function showSlides(){
+      let i;
+
+      const slides = document.getElementsByClassName('carousel');
+      const indicators = document.getElementsByClassName('indicator');
+
+      for (i =0; i < slides.length; i ++){
+        slides[i].style.opacity = 0;
+      }
+
+      slideIndex++;
+      //console.log('slideIndex', slideIndex);
+
+      if(slideIndex > slides.length){
+        slideIndex = 1;
+      }
+
+      for (i =0; i < indicators.length; i ++){
+        indicators[i].className = indicators[i].className.replace(' indicator-active', '');
+      }
+
+      slides[slideIndex -1].style.opacity = 1;
+      indicators[slideIndex -1].className += ' indicator-active';
+
+      setTimeout(showSlides, 3000);
+    }
+    showSlides();
+  },
+
+
   init: function () {
     const thisApp = this;
     //console.log('*** App starting ***');
@@ -142,6 +175,7 @@ const app = {
     //thisApp.initMenu();
     thisApp.initCart();
     thisApp.initBooking();
+    thisApp.initCarousel();
   },
 };
 

@@ -1,0 +1,61 @@
+.carousel{
+  width: 600px;
+}
+
+.quote {
+  color: rgba(0,0,0,.1);
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.carousel {
+  @include flex(row, center, center);
+  position: absolute;
+  align-items: flex-end;
+  transition: all 1s ease;
+}
+
+.carousel-inner {
+  transition: all 1s ease;
+  width: 600px;
+  @include flex(row, center, space-between);
+}
+
+.carousel .carousel-inner .item {
+  opacity: 0;
+  -webkit-transition-property: opacity;
+  -ms-transition-property: opacity;
+  transition-property: opacity;
+}
+
+.carousel .carousel-inner .active {
+  opacity: 1;
+  -webkit-transition-property: opacity;
+  -ms-transition-property: opacity;
+  transition-property: opacity;
+}
+
+.carousel-indicators {
+  position: absolute;
+  text-align: center;
+  bottom: 10px;
+}
+
+.indicator {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  border-radius: 50%;
+  background-color: $color-main;
+  transition: background-color 1s ease;
+}
+
+.indicator-active {
+  background-color: $color-dark;
+}
+
+blockquote {
+  width: 400px;
+  text-align: left;
+  border: none;
+}
