@@ -69,6 +69,8 @@ const app = {
       );
     }
 
+    document.body.classList = pageId;
+
   },
 
   initMenu: function () {

@@ -1,0 +1,97 @@
+.informations-container {
+  height: 1258px;
+  border-radius: $radius;
+  margin-top: 42px;
+  background-color: $color-light;
+}
+
+.first-row {
+  @include flex(row, flex-start, center);
+}
+
+.order {
+  cursor: pointer;
+  background: url('/pizzeria_photos/assets/pizza-1.jpg');
+  background-size: 299px 119px;
+}
+
+.book {
+  cursor: pointer;
+  background: url('/pizzeria_photos/assets/pizza-2.jpg');
+  margin-left: 6px;
+}
+
+.first-row-btn {
+  border-radius: $radius;
+  border-color: $color-light;
+  background-color: $color-dark;
+  color: $color-light;
+  margin-top: 63px;
+  height: 119px;
+  width: 294px;
+  font-family: $font-header;
+  letter-spacing: -0,65px;
+  padding: 0;
+
+  h2 {
+    font-size: 26px;
+    line-height: 70px;
+    margin-bottom: 0;
+    transition: $transition;
+  }
+
+  p {
+    font-size: $home-size;
+    font-family: $font-text;
+    font-weight: 400;
+    opacity: 0;
+    transition: $transition;
+  }
+}
+
+.first-row-btn:hover {
+  h2 {
+    color: $color-light;
+    line-height: 40px;
+  }
+
+  p {
+    color: $color-light;
+    line-height: 40px;
+    opacity: 1;
+  }
+}
+
+.second-row {
+  @include flex(row, flex-start, center);
+  margin-top: 6px;
+}
+
+.opening {
+  text-align: center;
+  width: 594px;
+  height: 120px;
+  margin: 0;
+  background-color: $color-main;
+  border-radius: $radius;
+  font-family: $font-header;
+  color: $color-light;
+
+  h3 {
+    font-size: 26px;
+    margin-top: 32px;
+    margin-bottom: 0;
+    letter-spacing: -0,65px;
+  }
+
+  p {
+    font-family: $font-text;
+    font-size: $home-size;
+    font-weight: $font-light;
+    margin-top: 0;
+  }
+
+}
+
+
+
