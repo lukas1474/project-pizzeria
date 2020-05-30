@@ -106,7 +106,7 @@
 .third-row {
   @include flex(column, center, center);
   position: relative;
-  margin-top: 102px;
+  margin-top: 50px;
   width: 604px;
   height: 300px;
   margin-left: 34px;
@@ -157,7 +157,7 @@
 }
 
 .four-row {
-  margin-top: 80px;
+  margin-top: 72px;
 }
 
 .four-row, .fifth-row {
@@ -208,4 +208,18 @@
 
 .heart:hover, .branch:hover {
   color: $color-main;
+}
+
+.insta-view {
+  margin-top: 12px;
+}
+
+.insta-view a{
+  margin-left: 28px;
+  padding-bottom: 40px;
+  color: $color-main;
+  font-family: $font-text;
+  font-size: $home-size;
+  font-weight: $font-normal;
+  line-height: 23px;
 }

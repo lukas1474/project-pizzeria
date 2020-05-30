@@ -12,11 +12,11 @@
   @include flex(row, center, center);
   position: absolute;
   align-items: flex-end;
-  transition: all 1s ease;
+  transition: all 3s ease;
 }
 
 .carousel-inner {
-  transition: all 1s ease;
+  transition: all 3s ease;
   width: 600px;
   @include flex(row, center, space-between);
 }
@@ -46,8 +46,8 @@
   height: 15px;
   display: inline-block;
   border-radius: 50%;
-  background-color: $color-main;
-  transition: background-color 1s ease;
+  background-color: lightgrey;
+  transition: background-color 3s ease;
 }
 
 .indicator-active {
