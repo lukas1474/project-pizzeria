@@ -15,63 +15,70 @@
   background-color: $color-light;
 }
 
-.first-row {
-  @include flex(row, flex-start, center);
-}
+.nav-box {
+  @include flex(row, center, space-between);
+  flex-wrap: wrap;
 
-.orders {
-  cursor: pointer;
-  background: url('/images/assets/pizza-1.jpg');
-  background-size: 299px 119px;
-}
-
-.book {
-  cursor: pointer;
-  background: url('/images/assets/pizza-2.jpg');
-  margin-left: 6px;
-}
-
-.first-row-btn {
-  border-radius: $radius;
-  border-color: $color-light;
-  background-color: $color-dark;
-  color: $color-light;
-  margin-top: 63px;
-  height: 119px;
-  width: 294px;
-  font-family: $font-header;
-  letter-spacing: -0,65px;
-  padding: 0;
-
-  h2 {
-    font-size: 26px;
-    line-height: 70px;
-    margin-bottom: 0;
-    transition: $transition;
+  > * {
+    border-radius: $radius;
+    text-align: center;
+    margin: 1%;
   }
 
-  p {
-    font-size: $home-size;
-    font-family: $font-text;
-    font-weight: 400;
-    opacity: 0;
-    transition: $transition;
+  .link-box {
+    height: 118px;
+    flex: 0 0 48%;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: $radius;
+    }
+  }
+
+  .link-box-details {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+
+    > * {
+      color: $color-light;
+      transition: $transition;
+      transform: translate3d(0, 20px, 0);
+    }
+
+    a {
+      @extend .h1;
+      opacity: 1;
+      text-decoration: none;
+      font-family: $font-header;
+      padding: 15px;
+      bottom: 50%;
+      display: inline-block;
+    }
+
+    p {
+      opacity: 0;
+      font-family: $font-text;
+      font-size: 14px;
+      bottom: 0;
+    }
+
+    &:hover > * {
+      transform: translate3d(0, 0, 0);
+    }
+
+    &:hover > p {
+      opacity: 1;
+    }
   }
 }
-
-.first-row-btn:hover {
-  h2 {
-    color: $color-light;
-    line-height: 40px;
-  }
-
-  p {
-    color: $color-light;
-    line-height: 40px;
-    opacity: 1;
-  }
-}
-
 .second-row {
   @include flex(row, flex-start, center);
   margin-top: 6px;
@@ -79,7 +86,7 @@
 
 .opening {
   text-align: center;
-  width: 594px;
+  width: 648px;
   height: 120px;
   margin: 0;
   background-color: $color-main;
