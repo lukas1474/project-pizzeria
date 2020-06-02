@@ -79,6 +79,7 @@
     }
   }
 }
+
 .second-row {
   @include flex(row, flex-start, center);
   margin-top: 6px;

@@ -9,6 +9,7 @@ import AmountWidget from './AmountWidget.js';
 export class Booking {
   constructor(element) {
     const thisBooking = this;
+    thisBooking.table = null;
 
     thisBooking.render(element);
     thisBooking.initWidgets();
@@ -184,7 +185,7 @@ export class Booking {
         div.classList.add('green');
       } else if (freeTable[emptyTable] === 1 || freeTable[emptyTable] === 2) {
         div.classList.add('orange');
-      } else if (freeTable[emptyTable] === 3) {
+      } else if (freeTable[emptyTable] >= 3) {
         div.classList.add('red');
       }
 
@@ -197,7 +198,7 @@ export class Booking {
     const thisBooking = this;
     const tables = thisBooking.dom.tables;
     //console.log('tablesarray', thisBooking.dom.tables);
-    let bookedTable = '';
+    //let bookedTable = '';
     for(let table of tables){
       table.addEventListener('click', function(){
         //console.log(table, 'table clicked');
@@ -207,25 +208,22 @@ export class Booking {
           if(activeTable) activeTable.classList.remove(classNames.booking.tableSelected);
           table.classList.add(classNames.booking.tableSelected);
 
-          bookedTable = table.getAttribute(settings.booking.tableIdAttribute);
-          console.log('bookedTable', bookedTable);
-          //console.log('activeTables', bookedTable)
-          thisBooking.table = bookedTable;
+          thisBooking.table = table.getAttribute(settings.booking.tableIdAttribute);
         }
       });
     }
 
     thisBooking.hourPicker.dom.input.addEventListener('input', function() {
-      if (bookedTable.length > 0) {
+      if (thisBooking.table) {
         console.log('tables[bookedTable-1]', tables);
-        tables[bookedTable-1].classList.remove(classNames.booking.tableSelected);
+        tables[thisBooking.table-1].classList.remove(classNames.booking.tableSelected);
       }
       thisBooking.updateDOM();
     });
 
     thisBooking.datePicker.dom.input.addEventListener('input', function() {
-      if (bookedTable.length > 0) {
-        tables[bookedTable-1].classList.remove(classNames.booking.tableSelected);
+      if (thisBooking.table) {
+        tables[thisBooking.table-1].classList.remove(classNames.booking.tableSelected);
       }
       thisBooking.updateDOM();
     });
