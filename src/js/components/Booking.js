@@ -181,9 +181,9 @@ export class Booking {
     for (let emptyTable = 0; emptyTable < freeTable.length; emptyTable++) {
       const div = document.createElement('div');
 
-      if (freeTable[emptyTable] === 0) {
+      if (freeTable[emptyTable] <= 1) {
         div.classList.add('green');
-      } else if (freeTable[emptyTable] === 1 || freeTable[emptyTable] === 2) {
+      } else if (freeTable[emptyTable] === 2) {
         div.classList.add('orange');
       } else if (freeTable[emptyTable] >= 3) {
         div.classList.add('red');
